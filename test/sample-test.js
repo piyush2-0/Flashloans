@@ -28,14 +28,14 @@ describe("Aave Flashloan Test", function () {
       });
         
         describe("Take loan",  async () => {
-          const assets = [Dai];
+          const assets = [daiAddress];
           const amounts = [10000];
           const modes = [0];
           //const premiums = [9];
 
           it("Check balance",  async () => {
             await flashloan.myFlashLoanCall(assets,amounts,modes,0)
-          await expect(await flashloan.getBalance(Dai)).to.eq(9991);
+          await expect(await flashloan.getBalance(daiAddress)).to.eq(9991);
           });
         })
   })
