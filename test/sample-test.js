@@ -17,7 +17,7 @@ describe("Aave Flashloan Test", function () {
   });
 
   describe("Flashloan Test",  async () => {
-    let Dai, aDai;
+    let Dai;
       beforeEach(async () => {
         const tokenArtifact = await artifacts.readArtifact("IERC20");
         Dai = new ethers.Contract(daiAddress, tokenArtifact.abi, ethers.provider);
@@ -31,13 +31,10 @@ describe("Aave Flashloan Test", function () {
           const assets = [Dai];
           const amounts = [10000];
           const modes = [0];
-          const premiums = [9];
+          //const premiums = [9];
 
           it("Check balance",  async () => {
             await flashloan.myFlashLoanCall(assets,amounts,modes,0)
-          
-            await flashloan.executeOperation(assets,amounts,premiums,"","")
-
           await expect(await flashloan.getBalance(Dai)).to.eq(9991);
           });
         })
